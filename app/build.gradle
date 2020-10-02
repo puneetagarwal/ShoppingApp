@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion deps.app.compileSdkVersion
+    buildToolsVersion deps.app.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.mobiquity.testapp"
+        minSdkVersion deps.app.minSdkVersion
+        targetSdkVersion deps.app.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL", "\"http://mobcategories.s3-website-eu-west-1.amazonaws.com\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation deps.kotlin.stdlib
+
+    implementation deps.androidx.coreKtx
+    implementation deps.androidx.appCompat
+    implementation deps.androidx.constraint
+    implementation deps.androidx.navigation
+    implementation deps.androidx.navigationUI
+    implementation deps.androidx.recyclerView
+    implementation deps.androidx.lifecycle
+
+    implementation deps.dagger.dagger
+    kapt deps.dagger.daggerCompiler
+
+    implementation deps.rxJava.rxJava
+    implementation deps.rxJava.rxAndroid
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.rxJava2Adapter
+    implementation deps.retrofit.moshiConverter
+
+    implementation deps.glide.glide
+
+    implementation deps.moshi.moshiKotlin
+    kapt deps.moshi.moshiKotlinCodegen
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.assertj
+    testImplementation deps.test.mockito
+    testImplementation deps.test.lifecycle
+    androidTestImplementation deps.test.espressoCore
+    androidTestImplementation deps.test.runner
+}

@@ -1,0 +1,99 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.versions = [
+            kotlin            : '1.4.0',
+            androidPlugin     : '4.0.1',
+            coreKtx           : '1.3.1',
+            appCompat         : '1.2.0',
+            recyclerView      : '1.1.0',
+            constraint        : '2.0.1',
+            lifecycle         : '2.2.0',
+            lifecycleTest     : '2.1.0',
+            navigation        : '2.3.0',
+            rxJava            : '2.2.19',
+            rxAndroid         : '2.1.1',
+            dagger            : '2.28.3',
+            junit             : '4.12',
+            assertj           : '3.12.2',
+            mockito           : '2.23.4',
+            espresso          : '3.1.1',
+            testRunner        : '1.1.0',
+            moshi             : '1.10.0',
+            retrofit          : '2.9.0',
+            glide             : '4.11.0'
+    ]
+
+    ext.deps = [
+            app     : [
+                    compileSdkVersion: 30,
+                    minSdkVersion    : 23,
+                    targetSdkVersion : 30,
+                    buildToolsVersion: "30.0.1"
+            ],
+            kotlin  : [
+                    gradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                    stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+            ],
+            android : [
+                    gradlePlugin: "com.android.tools.build:gradle:${versions.androidPlugin}"
+            ],
+            androidx: [
+                    coreKtx     : "androidx.core:core-ktx:${versions.coreKtx}",
+                    appCompat   : "androidx.appcompat:appcompat:${versions.appCompat}",
+                    lifecycle   : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+                    constraint  : "androidx.constraintlayout:constraintlayout:${versions.constraint}",
+                    navigation  : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+                    navigationUI: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                    safeArgsPlugin: "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}",
+                    recyclerView: "androidx.recyclerview:recyclerview:${versions.recyclerView}"
+            ],
+            rxJava  : [
+                    rxJava   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    rxAndroid: "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+            ],
+            dagger  : [
+                    dagger        : "com.google.dagger:dagger:${versions.dagger}",
+                    daggerCompiler: "com.google.dagger:dagger-compiler:${versions.dagger}"
+            ],
+            test    : [
+                    junit          : "junit:junit:${versions.junit}",
+                    assertj        : "org.assertj:assertj-core:${versions.assertj}",
+                    mockito        : "org.mockito:mockito-inline:${versions.mockito}",
+                    lifecycle      : "androidx.arch.core:core-testing:${versions.lifecycleTest}",
+                    espressoCore   : "androidx.test.espresso:espresso-core:${versions.espresso}",
+                    runner         : "androidx.test.ext:junit:${versions.testRunner}"
+            ],
+            moshi   : [
+                    moshiKotlin       : "com.squareup.moshi:moshi-kotlin:${versions.moshi}",
+                    moshiKotlinCodegen: "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
+            ],
+            retrofit: [
+                    retrofit      : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    rxJava2Adapter: "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
+                    moshiConverter: "com.squareup.retrofit2:converter-moshi:${versions.retrofit}"
+            ],
+            glide            : [
+                    glide: "com.github.bumptech.glide:glide:${versions.glide}"
+            ]
+    ]
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.android.gradlePlugin
+        classpath deps.kotlin.gradlePlugin
+        classpath deps.androidx.safeArgsPlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

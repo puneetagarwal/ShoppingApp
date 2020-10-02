@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Shopping App</string>
+
+    <string name="content_desc_product_image">Product Image</string>
+
+    <string name="error_message_unknown">An error has occurred.\nPlease try again.</string>
+    <string name="error_message_connection">Oops! It seems you are not connected to the internet.</string>
+    <string name="try_again">Try again</string>
+
+    <string name="product_detail_placeholder_text">Product details will be shown on this screen</string>
+
+    <string name="food_header">Food Items</string>
+    <string name="drink_header">Drink Items</string>
+</resources>
